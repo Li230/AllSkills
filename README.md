@@ -1,0 +1,146 @@
+# AllSkills - Claude Code 技能包
+
+这是一个完整的 Claude Code 技能集合，包含 20+ 个预配置的技能，用于提升 AI 辅助编程的效率和质量。
+
+## 快速安装
+
+### 方法一：克隆仓库（推荐）
+
+```bash
+# 1. 克隆技能包到本地
+git clone https://github.com/Li230/AllSkills.git ~/.claude/skills-backup
+
+# 2. 备份现有技能（如果有）
+if [ -d ~/.claude/skills ]; then
+    mv ~/.claude/skills ~/.claude/skills.old
+fi
+
+# 3. 创建符号链接或复制
+ln -s ~/.claude/skills-backup ~/.claude/skills
+# 或者复制：cp -r ~/.claude/skills-backup ~/.claude/skills
+```
+
+### 方法二：直接复制
+
+```bash
+# 克隆后直接复制
+git clone https://github.com/Li230/AllSkills.git /tmp/AllSkills
+cp -r /tmp/AllSkills/* ~/.claude/skills/
+```
+
+## 技能列表
+
+### 核心流程技能
+
+| 技能 | 用途 |
+|------|------|
+| `using-superpowers` | 技能系统入口，每次对话自动检查 |
+| `brainstorming` | 编写代码前的苏格拉底式设计 refine |
+| `writing-plans` | 详细的实现计划拆解 |
+| `executing-plans` | 批量执行计划，带人工检查点 |
+| `using-git-worktrees` | 创建隔离的 Git 工作区 |
+
+### 开发流程技能
+
+| 技能 | 用途 |
+|------|------|
+| `test-driven-development` | TDD 红 - 绿 - 重构循环 |
+| `systematic-debugging` | 四阶段系统性调试 |
+| `verification-before-completion` | 完成前验证 |
+| `subagent-driven-development` | 多子代理并行开发 |
+| `dispatching-parallel-agents` | 并行子代理调度 |
+
+### 代码评审技能
+
+| 技能 | 用途 |
+|------|------|
+| `requesting-code-review` | 代码评审请求 |
+| `receiving-code-review` | 接收评审反馈 |
+| `finishing-a-development-branch` | 完成开发分支 |
+
+### 文件操作技能
+
+| 技能 | 用途 |
+|------|------|
+| `docx` | Word 文档操作 (.docx) |
+| `xlsx` | 电子表格操作 (.xlsx/.csv) |
+| `pdf` | PDF 文件操作 |
+| `pptx` | PowerPoint 演示文稿操作 |
+
+### 元技能
+
+| 技能 | 用途 |
+|------|------|
+| `selfImprove` | 捕获学习、错误、修正 |
+| `project_memory_manager` | 跨会话记忆管理 |
+| `writing-skills` | 创建新技能的方法论 |
+| `frontend-design` | 高质量前端界面设计 |
+
+## 技能使用方法
+
+在 Claude Code 中，使用 `Skill` 工具调用技能：
+
+```
+/技能名称
+```
+
+例如：
+- `/brainstorming` - 开始设计讨论
+- `/test-driven-development` - 启动 TDD 流程
+- `/project_memory_manager` - 加载项目记忆
+
+## 技能优先级
+
+1. **用户明确指令** (CLAUDE.md 等) — 最高优先级
+2. **Superpowers 技能** — 覆盖默认系统行为
+3. **默认系统提示** — 最低优先级
+
+**关键规则**：如果有 1% 的可能性某个技能适用，必须调用该技能。
+
+## 目录结构
+
+```
+skills/
+├── SKILLS.md                     # 技能索引文件
+├── brainstorming/                # 设计 refine
+├── dispatching-parallel-agents/  # 并行代理调度
+├── docx/                         # Word 文档操作
+├── executing-plans/              # 计划执行
+├── finishing-a-development-branch/ # 分支完成
+├── frontend-design/              # 前端设计
+├── pdf/                          # PDF 操作
+├── pptx/                         # PowerPoint 操作
+├── project_memory_manager/       # 记忆管理
+├── receiving-code-review/        # 接收评审
+├── requesting-code-review/       # 请求评审
+├── selfImprove/                  # 自我改进
+├── subagent-driven-development/  # 子代理开发
+├── systematic-debugging/         # 系统调试
+├── test-driven-development/      # TDD
+├── using-git-worktrees/          # Git 工作区
+├── using-superpowers/            # 技能系统入口
+├── verification-before-completion/ # 完成验证
+├── writing-plans/                # 编写计划
+├── writing-skills/               # 编写技能
+└── xlsx/                         # Excel 操作
+```
+
+## 更新技能
+
+```bash
+cd ~/.claude/skills
+git pull origin main
+```
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request 来改进这些技能！
+
+## 许可证
+
+MIT License - 见 LICENSE 文件
+
+## 相关链接
+
+- [Claude Code 官方文档](https://claude.ai/code)
+- [GitHub 仓库](https://github.com/Li230/AllSkills)
