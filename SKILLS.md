@@ -64,3 +64,5 @@
 - [openspec-archive](openspec/openspec-archive/SKILL.md) - 归档已完成的 change（/opsx:archive）
 - [openspec-bulk-archive](openspec/openspec-bulk-archive/SKILL.md) - 批量归档多个 changes（/opsx:bulk-archive）
 - [openspec-update](openspec/openspec-update/SKILL.md) - 升级 CLI 后重新生成 AI 工具指令
+### 学习技能
+- [study_master](study_master/SKILL.md) - 综合 AI 学习助手（AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理）
