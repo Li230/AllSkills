@@ -76,6 +76,22 @@ cp -r /tmp/AllSkills/* ~/.claude/skills/
 | `writing-skills` | 创建新技能的方法论 |
 | `frontend-design` | 高质量前端界面设计 |
 
+### EIA 环评拆分流水线（eia-split/）
+
+环评报告章节拆分完整流水线：init → split-sub → parse → extract → render → to-py → generate → verify → report
+
+| 技能 | 用途 |
+|------|------|
+| `eia-split-init` | 初始化环评章节划分工作流 |
+| `eia-split-split-sub` | 大章拆分子项目 |
+| `eia-split-parse` | 解析环评 PDF 结构 |
+| `eia-split-extract` | 提取环评内容到结构化 YAML（表普查） |
+| `eia-split-render` | Jinja2 渲染 HTML（表格确定性渲染，不调 LLM） |
+| `eia-split-to-py` | 生成 prompts/getter/content 三件套 |
+| `eia-split-generate` | 调用 LLM 生成章节 HTML（表走 render 片段） |
+| `eia-split-verify` | render 后质量闸门（表格与 PDF/txt 比对至零误差） |
+| `eia-split-report` | 收尾校验（三方结构回归 + 一致性比对） |
+
 ## 技能使用方法
 
 在 Claude Code 中，使用 `Skill` 工具调用技能：
