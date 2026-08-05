@@ -182,3 +182,8 @@ MIT License - 见 LICENSE 文件
 
 - [Claude Code 官方文档](https://claude.ai/code)
 - [GitHub 仓库](https://github.com/Li230/AllSkills)
+### 学习技能
+
+| 技能 | 用途 |
+|------|------|
+| `study_master` | AI 学习助手：AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理（学习/复习/串联触发） |
