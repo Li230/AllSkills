@@ -47,3 +47,20 @@
 - [eia-split-generate](eia-split/eia-split-generate/SKILL.md) - 调用 LLM 生成章节 HTML（表走 render 片段，仅段落调 LLM）
 - [eia-split-verify](eia-split/eia-split-verify/SKILL.md) - render 后质量闸门（表格与 PDF/txt 多轮比对至零误差）
 - [eia-split-report](eia-split/eia-split-report/SKILL.md) - 收尾校验（render/LLM/PDF-txt 三方结构回归 + 一致性比对）
+
+### OpenSpec 工作流
+- [openspec-install](openspec/openspec-install/SKILL.md) - 全局安装 OpenSpec CLI（npm/pnpm/yarn/bun/nix）
+- [openspec-initial](openspec/openspec-initial/SKILL.md) - 在项目中初始化 OpenSpec（openspec init）
+- [openspec-onboard](openspec/openspec-onboard/SKILL.md) - 引导式完整 OpenSpec 工作流入门
+- [openspec-new](openspec/openspec-new/SKILL.md) - 新建 OpenSpec change（/opsx:new）
+- [openspec-explore](openspec/openspec-explore/SKILL.md) - 需求探索与问题澄清（/opsx:explore）
+- [openspec-continue](openspec/openspec-continue/SKILL.md) - 按依赖链继续创建 artifact（/opsx:continue）
+- [openspec-ff](openspec/openspec-ff/SKILL.md) - 快速生成全部规划 artifacts（/opsx:ff）
+- [openspec-config](openspec/openspec-config/SKILL.md) - 配置 OpenSpec 项目与全局设置
+- [openspec-schema](openspec/openspec-schema/SKILL.md) - 自定义工作流 schema（fork/validate/which）
+- [openspec-apply](openspec/openspec-apply/SKILL.md) - 按 tasks 实现 change（/opsx:apply）
+- [openspec-verify](openspec/openspec-verify/SKILL.md) - 验证实现与 artifacts 一致性（/opsx:verify）
+- [openspec-sync](openspec/openspec-sync/SKILL.md) - 将 delta specs 同步进主 specs（/opsx:sync）
+- [openspec-archive](openspec/openspec-archive/SKILL.md) - 归档已完成的 change（/opsx:archive）
+- [openspec-bulk-archive](openspec/openspec-bulk-archive/SKILL.md) - 批量归档多个 changes（/opsx:bulk-archive）
+- [openspec-update](openspec/openspec-update/SKILL.md) - 升级 CLI 后重新生成 AI 工具指令

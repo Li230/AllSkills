@@ -92,6 +92,28 @@ cp -r /tmp/AllSkills/* ~/.claude/skills/
 | `eia-split-verify` | render 后质量闸门（表格与 PDF/txt 比对至零误差） |
 | `eia-split-report` | 收尾校验（三方结构回归 + 一致性比对） |
 
+### OpenSpec 工作流（openspec/）
+
+基于 OpenSpec CLI 的完整变更管理流程：install → init → onboard → new → explore → continue → ff → config → schema → apply → verify → sync → archive → bulk-archive → update
+
+| 技能 | 用途 |
+|------|------|
+| `openspec-install` | 全局安装 OpenSpec CLI |
+| `openspec-initial` | 在项目中初始化 OpenSpec |
+| `openspec-onboard` | 引导式完整工作流入门 |
+| `openspec-new` | 新建 OpenSpec change |
+| `openspec-explore` | 需求探索与问题澄清 |
+| `openspec-continue` | 按依赖链继续创建 artifact |
+| `openspec-ff` | 快速生成全部规划 artifacts |
+| `openspec-config` | 配置项目与全局设置 |
+| `openspec-schema` | 自定义工作流 schema |
+| `openspec-apply` | 按 tasks 实现 change |
+| `openspec-verify` | 验证实现一致性 |
+| `openspec-sync` | delta specs 同步进主 specs |
+| `openspec-archive` | 归档已完成的 change |
+| `openspec-bulk-archive` | 批量归档多个 changes |
+| `openspec-update` | 升级 CLI 后重新生成指令 |
+
 ## 技能使用方法
 
 在 Claude Code 中，使用 `Skill` 工具调用技能：
