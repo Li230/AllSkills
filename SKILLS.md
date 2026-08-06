@@ -66,3 +66,7 @@
 - [openspec-update](openspec/openspec-update/SKILL.md) - 升级 CLI 后重新生成 AI 工具指令
 ### 学习技能
 - [study_master](study_master/SKILL.md) - 综合 AI 学习助手（AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理）
+### 自建工作流与质量约束
+- [opsx-flow](opsx-flow/SKILL.md) - OpenSpec × Superpowers 整合编排器（六阶段工作流 + 调度表 + 质量闸门）
+- [python-quality-guide](python-quality-guide/SKILL.md) - Python 高质量编程方法论（软约束：PEP8/类型注解/SOLID/可测试性）
+- [python-quality-gate](python-quality-gate/SKILL.md) - Python 代码质量硬闸门（硬约束：flake8 + black --check + pytest，全绿才放行）
