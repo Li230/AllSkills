@@ -1,11 +1,11 @@
 ---
 name: opsx-flow
-description: "OpenSpec × Superpowers 整合工作流（编排器总览）。以 OpenSpec 流程为骨架（explore→new→proposal→plan→apply→verify→archive），每阶段拆为独立 skill，通过执行契约（_checkpoint.md）驱动状态流转。触发词：\"走流程\"、\"opsx-flow\"、\"开始一个变更\"、\"按框架做\"。"
+description: "OpenSpec × Superpowers 整合工作流（编排器总览）。以 OpenSpec 流程为骨架（explore→new→proposal→plan→apply→verify→archive），每阶段拆为独立 flow-xx skill，通过执行契约（_checkpoint.md）驱动状态流转。触发词：\"走流程\"、\"opsx-flow\"、\"开始一个变更\"、\"按框架做\"。"
 ---
 
 # Opsx-Flow — 总览与调度
 
-> v3.1 — 8 个模块收拢在 `opsx-flow/` 单文件夹（子目录分阶段），脚手架生成文件架构，执行契约驱动流转
+> v4.0 — 8 个独立 skill（`opsx-flow` 总览 + 7 个 `flow-xx` 阶段 skill），每阶段独立注册、独立触发
 
 ## 设计哲学
 
@@ -16,47 +16,47 @@ opsx-flow 管 WHEN（每个阶段调谁）—— 调度
 _checkpoint.md 管 WHERE（当前在哪、下一步去哪）—— 状态机
 ```
 
-## 六阶段 + 脚手架，8 个模块（都在本文件夹内）
+## 六阶段 + 脚手架，8 个独立 skill
 
-| 阶段 | 模块文件 | 产出 | 必读前置 skill |
+| 阶段 | skill | 产出 | 必读前置 skill |
 |---|---|---|---|
-| 脚手架 | `new/SKILL.md` | 变更目录 + .openspec.yaml + _checkpoint.md | — |
-| Phase 1 | `explore/SKILL.md` | 需求范围 + checkpoint 更新 | grill-me（内嵌） |
-| Phase 2 | `proposal/SKILL.md` | proposal.md + specs/ | brainstorming |
-| Phase 3 | `plan/SKILL.md` | design.md + tasks.md | — |
-| Phase 4 | `apply/SKILL.md` | 完成的 tasks | 按任务类型调度 |
-| Phase 5 | `verify/SKILL.md` | 验证报告 | verification-before-completion |
-| Phase 6 | `archive/SKILL.md` | 归档 + STATUS 更新 | openspec-archive |
+| 脚手架 | `flow-new` | 变更目录 + .openspec.yaml + _checkpoint.md | — |
+| Phase 1 | `flow-explore` | 需求范围 + checkpoint 更新 | grill-me（内嵌） |
+| Phase 2 | `flow-proposal` | proposal.md + specs/ | brainstorming |
+| Phase 3 | `flow-plan` | design.md + tasks.md | — |
+| Phase 4 | `flow-apply` | 完成的 tasks | 按任务类型调度 |
+| Phase 5 | `flow-verify` | 验证报告 | verification-before-completion |
+| Phase 6 | `flow-archive` | 归档 + STATUS 更新 | openspec-archive |
 
 ## ⚠️ 核心机制
 
 ### 1. 分阶段加载
-每个阶段是独立模块文件，进入时 `read_file` 对应 `opsx-flow/<阶段>/SKILL.md`，指令在上下文最近位置。
+每个阶段是独立 skill，进入时 `read_file` 对应 `skills/flow-<阶段>/SKILL.md`，指令在上下文最近位置。
 
 ### 2. 执行契约（_checkpoint.md）
-每个变更目录下有 `_checkpoint.md`，记录当前 phase、产出物、下一步该读哪个模块。会话中断后读它恢复状态。
+每个变更目录下有 `_checkpoint.md`，记录当前 phase、产出物、下一步该读哪个 skill。会话中断后读它恢复状态。
 
 ### 3. 强制 skill 调用
-每个模块顶部 `⚠️ 进入前必做: read_file ...`，不读不继续。
+每个阶段 SKILL.md 顶部 `⚠️ 进入前必做: read_file ...`，不读不继续。
 
 ## 流程流转
 
 ```
 用户: "走流程"
   │
-  ├─ read_file: skills/opsx-flow/new/SKILL.md → 创建变更目录 + _checkpoint.md
+  ├─ read_file: skills/flow-new/SKILL.md → 创建变更目录 + _checkpoint.md
   │
-  ├─ read_file: skills/opsx-flow/explore/SKILL.md → 质询 → 更新 checkpoint
+  ├─ read_file: skills/flow-explore/SKILL.md → 质询 → 更新 checkpoint
   │
-  ├─ read_file: skills/opsx-flow/proposal/SKILL.md → 必读 brainstorming → 写 proposal → 更新 checkpoint
+  ├─ read_file: skills/flow-proposal/SKILL.md → 必读 brainstorming → 写 proposal → 更新 checkpoint
   │
-  ├─ read_file: skills/opsx-flow/plan/SKILL.md → 写 design + tasks → 更新 checkpoint
+  ├─ read_file: skills/flow-plan/SKILL.md → 写 design + tasks → 更新 checkpoint
   │
-  ├─ read_file: skills/opsx-flow/apply/SKILL.md → 按调度表执行 → 更新 checkpoint
+  ├─ read_file: skills/flow-apply/SKILL.md → 按调度表执行 → 更新 checkpoint
   │
-  ├─ read_file: skills/opsx-flow/verify/SKILL.md → 换模型审查 → 更新 checkpoint
+  ├─ read_file: skills/flow-verify/SKILL.md → 换模型审查 → 更新 checkpoint
   │
-  └─ read_file: skills/opsx-flow/archive/SKILL.md → 归档 → 最终 checkpoint
+  └─ read_file: skills/flow-archive/SKILL.md → 归档 → 最终 checkpoint
 ```
 
 ## 调度表（Phase 4 apply 用）
@@ -85,5 +85,5 @@ _checkpoint.md 管 WHERE（当前在哪、下一步去哪）—— 状态机
 会话中断后：
 ```
 read_file openspec/changes/<change-name>/_checkpoint.md
-→ 读当前 phase → read_file skills/opsx-flow/<阶段>/SKILL.md → 继续
+→ 读当前 phase → read_file skills/flow-<阶段>/SKILL.md → 继续
 ```
