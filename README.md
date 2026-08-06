@@ -187,3 +187,10 @@ MIT License - 见 LICENSE 文件
 | 技能 | 用途 |
 |------|------|
 | `study_master` | AI 学习助手：AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理（学习/复习/串联触发） |
+### 自建工作流与质量约束
+
+| 技能 | 用途 |
+|------|------|
+| `opsx-flow` | OpenSpec × Superpowers 整合编排器（六阶段工作流 + 调度表 + 质量闸门，触发词："走流程"） |
+| `python-quality-guide` | Python 高质量编程方法论（软约束） |
+| `python-quality-gate` | Python 代码质量硬闸门（flake8 + black + pytest 全绿才放行） |
