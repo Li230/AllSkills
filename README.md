@@ -194,3 +194,5 @@ MIT License - 见 LICENSE 文件
 | `opsx-flow` | OpenSpec × Superpowers 整合编排器（六阶段工作流 + 调度表 + 质量闸门，触发词："走流程"） |
 | `python-quality-guide` | Python 高质量编程方法论（软约束） |
 | `python-quality-gate` | Python 代码质量硬闸门（flake8 + black + pytest 全绿才放行） |
+
+> **opsx-flow v3.0**: 已拆分为 8 个独立 skill（opsx-flow / opsx-new / opsx-explore / opsx-proposal / opsx-plan / opsx-apply / opsx-verify / opsx-archive），详见上方 SKILLS.md。
