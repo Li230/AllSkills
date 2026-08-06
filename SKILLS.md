@@ -66,7 +66,14 @@
 - [openspec-update](openspec/openspec-update/SKILL.md) - 升级 CLI 后重新生成 AI 工具指令
 ### 学习技能
 - [study_master](study_master/SKILL.md) - 综合 AI 学习助手（AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理）
-### 自建工作流与质量约束
-- [opsx-flow](opsx-flow/SKILL.md) - OpenSpec × Superpowers 整合编排器（六阶段工作流 + 调度表 + 质量闸门）
+### 自建工作流与质量约束（opsx-flow 系列）
+- [opsx-flow](opsx-flow/SKILL.md) - 编排器总览（六阶段 + 调度表 + 恢复机制）
+- [opsx-new](opsx-new/SKILL.md) - 变更脚手架（生成变更目录 + .openspec.yaml + _checkpoint.md 执行契约）
+- [opsx-explore](opsx-explore/SKILL.md) - Phase 1 需求探索与质询（grill-me）
+- [opsx-proposal](opsx-proposal/SKILL.md) - Phase 2 方案构建（必读 brainstorming）
+- [opsx-plan](opsx-plan/SKILL.md) - Phase 3 原子任务规划（design.md + tasks.md）
+- [opsx-apply](opsx-apply/SKILL.md) - Phase 4 执行与调度（按任务类型调对应 skill）
+- [opsx-verify](opsx-verify/SKILL.md) - Phase 5 验证与换模型审查
+- [opsx-archive](opsx-archive/SKILL.md) - Phase 6 归档收尾（archive/ + STATUS.md 更新）
 - [python-quality-guide](python-quality-guide/SKILL.md) - Python 高质量编程方法论（软约束：PEP8/类型注解/SOLID/可测试性）
 - [python-quality-gate](python-quality-gate/SKILL.md) - Python 代码质量硬闸门（硬约束：flake8 + black --check + pytest，全绿才放行）
