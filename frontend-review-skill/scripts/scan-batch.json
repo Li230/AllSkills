@@ -1,0 +1,21 @@
+[
+  {
+    "tool_name": "execute_shell_command",
+    "arguments": {
+      "command": "ls ${args.code_dir}",
+      "cwd": "${args.code_dir}"
+    }
+  },
+  {
+    "tool_name": "execute_shell_command",
+    "arguments": {
+      "command": "python3 ${args.skill_dir}/scripts/scan.py --dir ${args.code_dir} --tech ${args.tech} --out ${args.out_file}"
+    }
+  },
+  {
+    "tool_name": "read_file",
+    "arguments": {
+      "file_path": "${args.out_file}"
+    }
+  }
+]

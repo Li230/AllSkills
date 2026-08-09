@@ -1,0 +1,426 @@
+{
+  "version": "1.0",
+  "note": "前端边界验收规则集。pattern 为正则；missing 为文件级配套检查（若文本含 missing 中任一项则跳过命中）。tech: all/react/vue/vanilla。severity: block/warn/suggest。来源: openspec/changes/frontend-review-skill/research-问题图谱.md",
+  "rules": [
+    {
+      "id": "R1",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "all",
+      "name": "定时器未清理",
+      "desc": "setInterval/setTimeout 无配套 clear*，组件/页面销毁后仍持续执行，造成内存泄漏与意外行为",
+      "patterns": [
+        "setInterval\\s*\\(",
+        "setTimeout\\s*\\("
+      ],
+      "missing": [
+        "clearInterval",
+        "clearTimeout"
+      ],
+      "fix_hint": "保存 timer id，在组件卸载/页面销毁时 clearInterval(timer)/clearTimeout(timer)"
+    },
+    {
+      "id": "R2",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "all",
+      "name": "事件监听器未移除",
+      "desc": "addEventListener 无 removeEventListener，元素/组件销毁后监听器仍持有引用，内存无法回收",
+      "patterns": [
+        "addEventListener\\s*\\("
+      ],
+      "missing": [
+        "removeEventListener"
+      ],
+      "fix_hint": "保存 handler 引用，销毁时 removeEventListener(event, handler)；React 在 useEffect cleanup 中移除"
+    },
+    {
+      "id": "R3",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "all",
+      "name": "WebSocket/EventSource 未关闭",
+      "desc": "长连接未 close/disconnect，页面销毁后连接与缓冲区泄漏",
+      "patterns": [
+        "new\\s+WebSocket\\s*\\(",
+        "new\\s+EventSource\\s*\\("
+      ],
+      "missing": [
+        "\\.close\\s*\\(",
+        "\\.disconnect\\s*\\("
+      ],
+      "fix_hint": "在组件卸载/页面关闭时 ws.close() / es.close()，并移除 onmessage/onerror 等处理器"
+    },
+    {
+      "id": "R4",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "all",
+      "name": "ObjectURL 未 revoke",
+      "desc": "URL.createObjectURL 无 revokeObjectURL，Blob 对象内存无法释放",
+      "patterns": [
+        "URL\\.createObjectURL\\s*\\("
+      ],
+      "missing": [
+        "revokeObjectURL"
+      ],
+      "fix_hint": "使用完毕后 URL.revokeObjectURL(url)；文件预览组件在卸载时 revoke"
+    },
+    {
+      "id": "R5",
+      "dimension": "memory",
+      "severity": "warn",
+      "tech": "all",
+      "name": "对话历史/数组无限增长",
+      "desc": "聊天/消息数组只 push 不截断，长会话内存持续膨胀（AI 聊天组件高发）",
+      "patterns": [
+        "conversationHistory\\.push",
+        "messages\\.push",
+        "history\\.push"
+      ],
+      "missing": [
+        "splice",
+        "slice\\s*\\(0",
+        "\\.shift\\s*\\(",
+        "maxLen",
+        "MAX_"
+      ],
+      "fix_hint": "设置上限：if (history.length > MAX) history.splice(0, history.length - MAX)"
+    },
+    {
+      "id": "R6",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "react",
+      "name": "useEffect 副作用无 cleanup",
+      "desc": "useEffect 内注册定时器/监听器/订阅，未返回清理函数，组件卸载后副作用持续",
+      "patterns": [
+        "useEffect\\s*\\(\\s*\\(\\)\\s*=>\\s*\\{"
+      ],
+      "missing": [
+        "return () =>",
+        "return\\s+\\(\\)\\s*=>"
+      ],
+      "fix_hint": "useEffect(() => { const t = setInterval(...); return () => clearInterval(t); }, [])"
+    },
+    {
+      "id": "R7",
+      "dimension": "memory",
+      "severity": "warn",
+      "tech": "all",
+      "name": "异步请求无取消机制",
+      "desc": "fetch/axios 无 AbortController/取消标志，组件卸载后响应仍会回调 setState/更新 DOM",
+      "patterns": [
+        "fetch\\s*\\(",
+        "axios\\s*\\.(get|post|put|delete)\\s*\\("
+      ],
+      "missing": [
+        "AbortController",
+        "signal",
+        "isMounted",
+        "cancelled"
+      ],
+      "fix_hint": "const ctrl = new AbortController(); fetch(url, { signal: ctrl.signal }); 卸载时 ctrl.abort()"
+    },
+    {
+      "id": "R8",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "vue",
+      "name": "Vue 生命周期未清理",
+      "desc": "mounted/created 注册监听/定时器，但未在 onUnmounted/beforeUnmount 清理",
+      "patterns": [
+        "mounted\\s*\\(|created\\s*\\(",
+        "onMounted\\s*\\(",
+        "onCreated\\s*\\("
+      ],
+      "missing": [
+        "onUnmounted",
+        "beforeUnmount",
+        "onBeforeUnmount",
+        "unmounted\\s*\\("
+      ],
+      "fix_hint": "onMounted(() => { window.addEventListener(...) }); onUnmounted(() => { window.removeEventListener(...) })"
+    },
+    {
+      "id": "R9",
+      "dimension": "memory",
+      "severity": "block",
+      "tech": "vue",
+      "name": "EventBus $on 无 $off",
+      "desc": "事件总线监听无对应 $off，组件销毁后仍接收事件，内存与行为泄漏",
+      "patterns": [
+        "\\$on\\s*\\("
+      ],
+      "missing": [
+        "\\$off"
+      ],
+      "fix_hint": "在 beforeUnmount/onUnmounted 中 $off(event, handler)；或改用 provide/inject 或 Pinia"
+    },
+    {
+      "id": "S1",
+      "dimension": "security",
+      "severity": "block",
+      "tech": "vue",
+      "name": "v-html 使用",
+      "desc": "v-html 直接渲染可能含用户输入的 HTML，存在 XSS 风险",
+      "patterns": [
+        "v-html"
+      ],
+      "fix_hint": "默认用插值 {{ }} 渲染文本；确需富文本时用 DOMPurify 消毒后再 v-html"
+    },
+    {
+      "id": "S2",
+      "dimension": "security",
+      "severity": "block",
+      "tech": "react",
+      "name": "dangerouslySetInnerHTML 使用",
+      "desc": "dangerouslySetInnerHTML 直接注入 HTML，用户输入未消毒存在 XSS 风险",
+      "patterns": [
+        "dangerouslySetInnerHTML"
+      ],
+      "fix_hint": "默认用 {children} 渲染；确需 HTML 时用 DOMPurify 消毒"
+    },
+    {
+      "id": "S3",
+      "dimension": "security",
+      "severity": "block",
+      "tech": "all",
+      "name": "innerHTML 直接赋值",
+      "desc": "innerHTML = 用户可控内容会触发 XSS；= 静态内容也建议用 textContent",
+      "patterns": [
+        "innerHTML\\s*="
+      ],
+      "fix_hint": "渲染文本用 textContent；确需 HTML 先消毒"
+    },
+    {
+      "id": "S4",
+      "dimension": "security",
+      "severity": "block",
+      "tech": "all",
+      "name": "硬编码密钥",
+      "desc": "API key/secret/password/token 字面量写死在代码中，泄露即事故",
+      "patterns": [
+        "(apiKey|api_key|secret|accessToken|api_token)\\s*[:=]\\s*[\\\"'][^\\\"']{8,}[\\\"']"
+      ],
+      "fix_hint": "密钥放服务端环境变量，前端经代理获取；已泄露的密钥立即轮换"
+    },
+    {
+      "id": "S5",
+      "dimension": "security",
+      "severity": "block",
+      "tech": "all",
+      "name": "eval / new Function",
+      "desc": "动态执行字符串代码，用户输入可致任意代码执行（严重 XSS/注入）",
+      "patterns": [
+        "eval\\s*\\(",
+        "new\\s+Function\\s*\\("
+      ],
+      "fix_hint": "不要动态执行字符串；用数据驱动逻辑或白名单映射"
+    },
+    {
+      "id": "D1",
+      "dimension": "dependency",
+      "severity": "warn",
+      "tech": "all",
+      "name": "过时 API",
+      "desc": "已废弃/过时 API（React 旧生命周期、createRef 等），易出兼容问题",
+      "patterns": [
+        "componentWillMount",
+        "componentWillReceiveProps",
+        "createRef\\s*\\(",
+        "Vue\\.extend"
+      ],
+      "fix_hint": "迁移到新 API：React 用 hooks/useRef；Vue 3 用 defineComponent/组合式 API"
+    },
+    {
+      "id": "D2",
+      "dimension": "dependency",
+      "severity": "warn",
+      "tech": "all",
+      "name": "深层相对路径导入",
+      "desc": "深层 ../ 相对导入通常是 AI 幻觉路径或结构混乱信号，易 import 失败",
+      "patterns": [
+        "from\\s+['\"](?:\\.\\./){3,}",
+        "import\\s+[^;]*from\\s+['\"](?:\\.\\./){3,}"
+      ],
+      "fix_hint": "检查模块是否真实存在；使用别名/绝对导入（@/）并验证包名"
+    },
+    {
+      "id": "A1",
+      "dimension": "accessibility",
+      "severity": "warn",
+      "tech": "all",
+      "name": "img 无 alt",
+      "desc": "图片缺 alt 属性，屏幕阅读器无法描述内容（WCAG 1.1.1）",
+      "patterns": [
+        "<img\\s"
+      ],
+      "missing": [
+        "alt"
+      ],
+      "fix_hint": "为 img 补充 alt=\"描述\"；装饰性图片 alt=\"\""
+    },
+    {
+      "id": "A2",
+      "dimension": "accessibility",
+      "severity": "warn",
+      "tech": "all",
+      "name": "空按钮",
+      "desc": "<button></button> 无可见文本/aria-label，键盘与读屏用户无法使用",
+      "patterns": [
+        "<button\\s*>\\s*</button>",
+        "<button[^>]*aria-label=\"\"[^>]*>"
+      ],
+      "fix_hint": "按钮内放可见文本或 aria-label=\"操作说明\""
+    },
+    {
+      "id": "A3",
+      "dimension": "accessibility",
+      "severity": "warn",
+      "tech": "all",
+      "name": "div 可点击无键盘支持",
+      "desc": "div 绑 onClick 但无 role/tabindex/键盘事件，键盘用户无法操作（WCAG 2.1.1）；已有 role/tabIndex 的正确实现由 agent 人工确认",
+      "patterns": [
+        "<div[^>]*onClick"
+      ],
+      "fix_hint": "用 <button> 替代；或用 role=\"button\" tabIndex={0} + onKeyDown(Enter/Space)",
+      "missing": [
+        "role",
+        "tabIndex"
+      ]
+    },
+    {
+      "id": "A4",
+      "dimension": "accessibility",
+      "severity": "warn",
+      "tech": "all",
+      "name": "input 无标签",
+      "desc": "表单输入无 label/aria-label，读屏用户不知道输入什么（WCAG 1.3.1/4.1.2）",
+      "patterns": [
+        "<input\\b",
+        "<textarea\\b"
+      ],
+      "missing": [
+        "<label",
+        "aria-label",
+        "placeholder"
+      ],
+      "fix_hint": "用 <label for=\"id\"> 关联，或 aria-label=\"说明\""
+    },
+    {
+      "id": "P1",
+      "dimension": "performance",
+      "severity": "warn",
+      "tech": "all",
+      "name": "图片未懒加载",
+      "desc": "img 未加 loading=\"lazy\"，首屏加载全部图片，浪费带宽与内存",
+      "patterns": [
+        "<img\\s"
+      ],
+      "missing": [
+        "loading=\"lazy\"",
+        "loading='lazy'"
+      ],
+      "fix_hint": "非首屏图片加 loading=\"lazy\" 与 width/height（防 CLS）"
+    },
+    {
+      "id": "P2",
+      "dimension": "performance",
+      "severity": "warn",
+      "tech": "react",
+      "name": "map 渲染无 key",
+      "desc": "列表渲染缺 key，React 无法正确复用组件，导致重渲染性能与状态错乱",
+      "patterns": [
+        "\\.map\\s*\\("
+      ],
+      "missing": [
+        "key="
+      ],
+      "fix_hint": "为列表项加稳定 key（id 而非 index）"
+    },
+    {
+      "id": "P3",
+      "dimension": "performance",
+      "severity": "warn",
+      "tech": "all",
+      "name": "串行请求风险",
+      "desc": "循环/顺序 await fetch 会形成请求瀑布，页面加载慢",
+      "patterns": [
+        "await\\s+fetch\\s*\\(",
+        "await\\s+axios"
+      ],
+      "fix_hint": "相互独立请求用 Promise.all 并行；循环内请求改为批量接口"
+    },
+    {
+      "id": "E1",
+      "dimension": "error_handling",
+      "severity": "block",
+      "tech": "all",
+      "name": "fetch/then 无 catch",
+      "desc": "异步请求未捕获错误，请求失败时产生未处理 promise 拒绝，页面无反馈",
+      "patterns": [
+        "fetch\\s*\\(",
+        "\\.then\\s*\\(",
+        "axios\\s*\\."
+      ],
+      "missing": [
+        "\\.catch",
+        "catch\\s*\\(",
+        "try\\s*\\{"
+      ],
+      "fix_hint": "fetch(...).then(...).catch(err => { 展示错误提示 }); 或 async/await + try/catch"
+    },
+    {
+      "id": "E2",
+      "dimension": "error_handling",
+      "severity": "warn",
+      "tech": "all",
+      "name": "空 catch",
+      "desc": "catch 块为空，错误被静默吞掉，用户与开发者都无从得知失败",
+      "patterns": [
+        "catch\\s*\\([^)]*\\)\\s*\\{\\s*\\}",
+        "catch\\s*\\{\\s*\\}"
+      ],
+      "fix_hint": "catch 中至少记录日志并给用户可理解的错误提示"
+    },
+    {
+      "id": "C1",
+      "dimension": "responsive",
+      "severity": "warn",
+      "tech": "all",
+      "name": "固定像素宽高",
+      "desc": "固定 px 宽高在移动端/缩放场景溢出，非响应式",
+      "patterns": [
+        "(?<![\\w-])width\\s*:\\s*\\d+px",
+        "(?<![\\w-])height\\s*:\\s*\\d+px",
+        "width=\\s*\"\\d+\""
+      ],
+      "fix_hint": "用相对单位/百分比/flex/grid；图片限制 max-width: 100%"
+    },
+    {
+      "id": "Q1",
+      "dimension": "code_quality",
+      "severity": "suggest",
+      "tech": "all",
+      "name": "console.log 残留",
+      "desc": "调试日志残留生产代码，泄露信息且噪声大",
+      "patterns": [
+        "console\\.log\\s*\\("
+      ],
+      "fix_hint": "生产环境移除 console.log，或接入统一 logger（debug 级别）"
+    },
+    {
+      "id": "Q2",
+      "dimension": "code_quality",
+      "severity": "suggest",
+      "tech": "all",
+      "name": "any 滥用",
+      "desc": "TypeScript 中 : any 关闭类型检查，AI 生成代码高发，丢失类型安全",
+      "patterns": [
+        ":\\s*any\\b"
+      ],
+      "fix_hint": "用具体类型/泛型；未知数据用 unknown + 类型守卫"
+    }
+  ]
+}

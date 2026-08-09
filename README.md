@@ -57,6 +57,7 @@ cp -r /tmp/AllSkills/* ~/.claude/skills/
 | `requesting-code-review` | 代码评审请求 |
 | `receiving-code-review` | 接收评审反馈 |
 | `finishing-a-development-branch` | 完成开发分支 |
+| `frontend-review-skill` | 前端边界验收（内存/资源/安全 10 维度，分级报告+修复代码+评分） |
 
 ### 文件操作技能
 

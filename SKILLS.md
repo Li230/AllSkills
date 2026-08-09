@@ -77,3 +77,5 @@
 - [flow-archive](flow-archive/SKILL.md) - Phase 6 归档收尾（archive/ + STATUS.md 更新）
 - [python-quality-guide](python-quality-guide/SKILL.md) - Python 高质量编程方法论（软约束：PEP8/类型注解/SOLID/可测试性）
 - [python-quality-gate](python-quality-gate/SKILL.md) - Python 代码质量硬闸门（硬约束：flake8 + black --check + pytest，全绿才放行）
+### 前端验收
+- [frontend-review-skill](frontend-review-skill/SKILL.md) - 前端边界验收（AI 写的前端代码：内存/资源/安全/可访问性/性能 10 维度审查，输出分级报告+修复代码+评分）
