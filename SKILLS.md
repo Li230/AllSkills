@@ -66,6 +66,10 @@
 - [openspec-update](openspec/openspec-update/SKILL.md) - 升级 CLI 后重新生成 AI 工具指令
 ### 学习技能
 - [study_master](study_master/SKILL.md) - 综合 AI 学习助手（AI 导师教学 + Zettelkasten 知识串联 + 学习日志管理）
+- [py-study](py-study/SKILL.md) - Python 数据科学小老师（Python 基础 → pandas/numpy/sklearn 代码教学：分层讲解 + 费曼检查 + 1/3/7/30 间隔复习 + 误概念管理）
+### 数据科学
+- [ds-competition](ds-competition/SKILL.md) - 数据科学竞赛全流程（验证设计 / GBM 基线 / 调参 / 集成 / 提交校验）
+- [tabular-ml-prep](tabular-ml-prep/SKILL.md) - 表格数据建模预处理（步骤 0 数据质量总检 + 12 步清洗/特征工程流程）
 ### 自建工作流与质量约束（opsx-flow 系列，8 个独立 skill）
 - [opsx-flow](opsx-flow/SKILL.md) - 编排器总览（六阶段 + 调度表 + 恢复机制）
 - [flow-new](flow-new/SKILL.md) - 变更脚手架（生成变更目录 + .openspec.yaml + _checkpoint.md 执行契约）

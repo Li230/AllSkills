@@ -1,0 +1,4 @@
+interface:
+  display_name: "PyStudy 学习小老师"
+  short_description: "Python基础→pandas/numpy/sklearn 代码教学"
+  default_prompt: "Use $py-study to explain this code from scratch, connecting it to what I already know."

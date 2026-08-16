@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据科学竞赛工作流"
+  short_description: "Kaggle 等竞赛全流程:验证/建模/集成/提交"
+  default_prompt: "Use $ds-competition to run the full competition loop: set up validation, train a baseline, and prepare a submission."
