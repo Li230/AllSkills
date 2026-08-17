@@ -26,6 +26,7 @@
 
 ### Design
 - [frontend-design](frontend-design/SKILL.md) - 创建独特、生产级的前端界面，具有高设计质量
+- [superdesign](superdesign/SKILL.md) - 在 Superdesign 画布上设计/重设计前端 UI、复刻现有界面、提取设计系统、构建可复用组件、制作海报/营销图
 
 ### Meta Skills
 - [selfImprove](selfImprove/SKILL.md) - 捕获学习、错误和修正，实现持续改进
@@ -52,7 +53,7 @@
 - [openspec-install](openspec/openspec-install/SKILL.md) - 全局安装 OpenSpec CLI（npm/pnpm/yarn/bun/nix）
 - [openspec-initial](openspec/openspec-initial/SKILL.md) - 在项目中初始化 OpenSpec（openspec init）
 - [openspec-onboard](openspec/openspec-onboard/SKILL.md) - 引导式完整 OpenSpec 工作流入门
-- [openspec-new](openspec/openspec-new/SKILL.md) - 新建 OpenSpec change（/opsx:new）
+- [openspec-new](openspec/openspec-new/SKILL.md) - 新建 OpenSpec change（openspec new），生成变更骨架
 - [openspec-explore](openspec/openspec-explore/SKILL.md) - 需求探索与问题澄清（/opsx:explore）
 - [openspec-continue](openspec/openspec-continue/SKILL.md) - 按依赖链继续创建 artifact（/opsx:continue）
 - [openspec-ff](openspec/openspec-ff/SKILL.md) - 快速生成全部规划 artifacts（/opsx:ff）
@@ -83,3 +84,20 @@
 - [python-quality-gate](python-quality-gate/SKILL.md) - Python 代码质量硬闸门（硬约束：flake8 + black --check + pytest，全绿才放行）
 ### 前端验收
 - [frontend-review-skill](frontend-review-skill/SKILL.md) - 前端边界验收（AI 写的前端代码：内存/资源/安全/可访问性/性能 10 维度审查，输出分级报告+修复代码+评分）
+
+
+### Data Science
+
+- [ds-competition](ds-competition/SKILL.md) - 数据科学竞赛端到端工作流（Kaggle/天池：验证设计、GBM 基线、调优、集成、提交校验）
+- [tabular-ml-prep](tabular-ml-prep/SKILL.md) - 表格/结构化数据 ML 预处理（12 步验证驱动的 EDA/清洗/特征工程）
+- [py-study](py-study/SKILL.md) - Python 数据科学小老师（从零讲 pandas/numpy/sklearn，分层教学 + 练习检查）
+
+### Flow 工作流（opsx-flow 子阶段）
+
+- [flow-new](flow-new/SKILL.md) - 创建变更脚手架（openspec/changes/<name>/ + 执行契约）
+- [flow-explore](flow-explore/SKILL.md) - Phase 1 需求探索与质询（苏格拉底式提问）
+- [flow-proposal](flow-proposal/SKILL.md) - Phase 2 方案构建（proposal.md + specs delta）
+- [flow-plan](flow-plan/SKILL.md) - Phase 3 原子任务规划（design.md + tasks.md）
+- [flow-apply](flow-apply/SKILL.md) - Phase 4 执行+调度（质量闸门兜底）
+- [flow-verify](flow-verify/SKILL.md) - Phase 5 验证+换模型独立审查
+- [flow-archive](flow-archive/SKILL.md) - Phase 6 归档收尾（更新 STATUS/记忆/checkpoint）
