@@ -1,11 +1,11 @@
 ---
 name: opsx-flow
-description: "OpenSpec × Superpowers 整合工作流（编排器总览）。以 OpenSpec 流程为骨架（explore→new→proposal→plan→apply→verify→archive），每阶段拆为独立 skill（flow-xx），通过执行契约（_checkpoint.md）驱动状态流转。触发词：\"走流程\"、\"opsx-flow\"、\"开始一个变更\"、\"按框架做\"。"
+description: "OpenSpec × Superpowers 整合工作流（编排器总览）。以 OpenSpec 流程为骨架（explore→new→proposal→plan→reflect→apply→verify→archive），每阶段拆为独立 skill（flow-xx），通过执行契约（_checkpoint.md）驱动状态流转。触发词：\"走流程\"、\"opsx-flow\"、\"开始一个变更\"、\"按框架做\"。"
 ---
 
 # Opsx-Flow — 总览与调度
 
-> v4.0 — 8 个独立 skill（opsx-flow 总览 + 7 个 flow-xx 阶段 skill），执行契约驱动流转
+> v4.1 — 9 个独立 skill（opsx-flow 总览 + 8 个 flow-xx 阶段 skill），执行契约驱动流转
 
 ## 设计哲学
 
@@ -16,7 +16,7 @@ opsx-flow 管 WHEN（每个阶段调谁）—— 调度
 _checkpoint.md 管 WHERE（当前在哪、下一步去哪）—— 状态机
 ```
 
-## 八个 skill，六阶段 + 脚手架
+## 九个 skill，六阶段 + 脚手架 + 反思闸门
 
 | 阶段 | skill 名 | 产出 | 必读前置 skill |
 |---|---|---|---|
@@ -25,6 +25,7 @@ _checkpoint.md 管 WHERE（当前在哪、下一步去哪）—— 状态机
 | Phase 1 | `flow-explore` | 需求范围 + checkpoint 更新 | grill-me（内嵌） |
 | Phase 2 | `flow-proposal` | proposal.md + specs/ | brainstorming |
 | Phase 3 | `flow-plan` | design.md + tasks.md | — |
+| Phase 3.5 | `flow-reflect` | _reflection.md（GO/先澄清/先验证 裁决） | 强制书面反思两问 |
 | Phase 4 | `flow-apply` | 完成的 tasks | 按任务类型调度 |
 | Phase 5 | `flow-verify` | 验证报告 | verification-before-completion |
 | Phase 6 | `flow-archive` | 归档 + STATUS 更新 | openspec-archive |
@@ -52,6 +53,8 @@ _checkpoint.md 管 WHERE（当前在哪、下一步去哪）—— 状态机
   ├─ read_file: skills/flow-proposal/SKILL.md → 必读 brainstorming → 写 proposal → 更新 checkpoint
   │
   ├─ read_file: skills/flow-plan/SKILL.md → 写 design + tasks → 更新 checkpoint
+  │
+  ├─ read_file: skills/flow-reflect/SKILL.md → 书面自问两问 → 裁决 GO 才继续
   │
   ├─ read_file: skills/flow-apply/SKILL.md → 按调度表执行 → 更新 checkpoint
   │

@@ -123,7 +123,7 @@ cp -r /tmp/AllSkills/* ~/.claude/skills/
 
 ### Flow 工作流（flow-/）
 
-opsx-flow 的 6 阶段子技能（explore → proposal → plan → apply → verify → archive），由 `opsx-flow` 总览调度：
+opsx-flow 的 6 阶段 + 反思闸门子技能（explore → proposal → plan → reflect → apply → verify → archive），由 `opsx-flow` 总览调度：
 
 | 技能 | 用途 |
 |------|------|
@@ -131,6 +131,7 @@ opsx-flow 的 6 阶段子技能（explore → proposal → plan → apply → ve
 | `flow-explore` | Phase 1 需求探索与质询（苏格拉底式提问挖透边界） |
 | `flow-proposal` | Phase 2 方案构建（产出 proposal.md + specs delta） |
 | `flow-plan` | Phase 3 原子任务规划（design.md + tasks.md） |
+| `flow-reflect` | Phase 3.5 执行前反思闸门（书面自问两问，产出 _reflection.md，GO/先澄清/先验证 裁决） |
 | `flow-apply` | Phase 4 执行+调度（按 tasks 调度 skill，质量闸门兜底） |
 | `flow-verify` | Phase 5 验证 + 换模型独立审查，防自审走过场 |
 | `flow-archive` | Phase 6 归档收尾（更新 STATUS/记忆/最终 checkpoint） |
@@ -175,6 +176,7 @@ skills/
 ├── flow-new/                       # Flow 变更脚手架
 ├── flow-plan/                      # Flow Phase 3 任务规划
 ├── flow-proposal/                  # Flow Phase 2 方案构建
+├── flow-reflect/                   # Flow Phase 3.5 执行前反思闸门
 ├── flow-verify/                    # Flow Phase 5 验证审查
 ├── frontend-design/                # 前端设计
 ├── frontend-review-skill/          # 前端边界验收
@@ -244,4 +246,4 @@ MIT License - 见 LICENSE 文件
 | `python-quality-guide` | Python 高质量编程方法论（软约束） |
 | `python-quality-gate` | Python 代码质量硬闸门（flake8 + black + pytest 全绿才放行） |
 
-> **opsx-flow v3.0**: 已拆分为 8 个独立 skill（opsx-flow / opsx-new / opsx-explore / opsx-proposal / opsx-plan / opsx-apply / opsx-verify / opsx-archive），详见上方 SKILLS.md。
+> **opsx-flow v4.1**: 已拆分为 9 个独立 skill（opsx-flow 总览 + 8 个 flow-xx 阶段 skill，含 Phase 3.5 执行前反思闸门 flow-reflect），详见上方 SKILLS.md。

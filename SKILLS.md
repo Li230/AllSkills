@@ -71,12 +71,13 @@
 ### 数据科学
 - [ds-competition](ds-competition/SKILL.md) - 数据科学竞赛全流程（验证设计 / GBM 基线 / 调参 / 集成 / 提交校验）
 - [tabular-ml-prep](tabular-ml-prep/SKILL.md) - 表格数据建模预处理（步骤 0 数据质量总检 + 12 步清洗/特征工程流程）
-### 自建工作流与质量约束（opsx-flow 系列，8 个独立 skill）
+### 自建工作流与质量约束（opsx-flow 系列，9 个独立 skill）
 - [opsx-flow](opsx-flow/SKILL.md) - 编排器总览（六阶段 + 调度表 + 恢复机制）
 - [flow-new](flow-new/SKILL.md) - 变更脚手架（生成变更目录 + .openspec.yaml + _checkpoint.md 执行契约）
 - [flow-explore](flow-explore/SKILL.md) - Phase 1 需求探索与质询（grill-me）
 - [flow-proposal](flow-proposal/SKILL.md) - Phase 2 方案构建（必读 brainstorming + spec self-review）
 - [flow-plan](flow-plan/SKILL.md) - Phase 3 原子任务规划（design.md + tasks.md）
+- [flow-reflect](flow-reflect/SKILL.md) - Phase 3.5 执行前反思闸门（书面自问两问 + GO/先澄清/先验证 裁决）
 - [flow-apply](flow-apply/SKILL.md) - Phase 4 执行与调度（按任务类型调对应 skill）
 - [flow-verify](flow-verify/SKILL.md) - Phase 5 验证与换模型审查
 - [flow-archive](flow-archive/SKILL.md) - Phase 6 归档收尾（archive/ + STATUS.md 更新）

@@ -10,8 +10,9 @@ name: flow-apply
 
 ```
 read_file: openspec/changes/<change-name>/_checkpoint.md
+read_file: openspec/changes/<change-name>/_reflection.md
 ```
-确认 Phase 3 plan 已完成、tasks.md 已写。
+确认 Phase 3 plan 已完成、tasks.md 已写，且 **_reflection.md 裁决 = GO**（未经 Phase 3.5 反思闸门不得进入执行）。若 _reflection.md 缺失或裁决为「先澄清/先验证」，先回到 flow-reflect 处理完毕再执行。
 
 ## 目的
 

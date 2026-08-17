@@ -79,11 +79,11 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 - ...
 
 ## 下一步
-read_file: skills/flow-apply/SKILL.md
+read_file: skills/flow-reflect/SKILL.md   # Phase 3.5 执行前反思闸门，先反思再执行
 ```
 
 ## 完成标准
 
 - [ ] design.md 已写（含 Decisions + Risks）
 - [ ] tasks.md 已写，每个任务有类型标注 + 验证条件
-- [ ] _checkpoint.md 已更新（指向 flow-apply）
+- [ ] _checkpoint.md 已更新（指向 flow-reflect）
