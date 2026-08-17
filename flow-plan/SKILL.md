@@ -42,7 +42,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 |---|---|
 | 原子 | 一件事，不混合 |
 | 可验证 | 有明确完成标准（命令输出/文件存在） |
-| 带类型标注 | 决定 Phase 4 调哪个 skill |
+| 带类型标注 | 决定 Phase 5 调哪个 skill |
 
 格式：
 ```markdown
@@ -52,7 +52,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 
 类型取值：
 
-| 类型 | Phase 4 调度 |
+| 类型 | Phase 5 调度 |
 |---|---|
 | `file-op` | 直接执行 |
 | `docs` | 直接执行 |
@@ -79,7 +79,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 - ...
 
 ## 下一步
-read_file: skills/flow-reflect/SKILL.md   # Phase 3.5 执行前反思闸门，先反思再执行
+read_file: skills/flow-reflect/SKILL.md   # Phase 4 执行前反思闸门，先反思再执行
 ```
 
 ## 完成标准

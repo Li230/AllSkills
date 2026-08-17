@@ -131,10 +131,10 @@ opsx-flow 的 6 阶段 + 反思闸门子技能（explore → proposal → plan �
 | `flow-explore` | Phase 1 需求探索与质询（苏格拉底式提问挖透边界） |
 | `flow-proposal` | Phase 2 方案构建（产出 proposal.md + specs delta） |
 | `flow-plan` | Phase 3 原子任务规划（design.md + tasks.md） |
-| `flow-reflect` | Phase 3.5 执行前反思闸门（两问均先联网核实，产出 _reflection.md，GO/先澄清/先验证 可并存 裁决） |
-| `flow-apply` | Phase 4 执行+调度（按 tasks 调度 skill，质量闸门兜底） |
-| `flow-verify` | Phase 5 验证 + 换模型独立审查，防自审走过场 |
-| `flow-archive` | Phase 6 归档收尾（更新 STATUS/记忆/最终 checkpoint） |
+| `flow-reflect` | Phase 4 执行前反思闸门（两问均先联网核实，产出 _reflection.md，GO/先澄清/先验证 可并存 裁决） |
+| `flow-apply` | Phase 5 执行+调度（按 tasks 调度 skill，质量闸门兜底） |
+| `flow-verify` | Phase 6 验证 + 换模型独立审查，防自审走过场 |
+| `flow-archive` | Phase 7 归档收尾（更新 STATUS/记忆/最终 checkpoint） |
 
 ## 技能使用方法
 
@@ -170,14 +170,14 @@ skills/
 ├── eia-split/                      # 环评拆分流水线（9 子技能）
 ├── executing-plans/                # 计划执行
 ├── finishing-a-development-branch/ # 分支完成
-├── flow-apply/                     # Flow Phase 4 执行调度
-├── flow-archive/                   # Flow Phase 6 归档
+├── flow-apply/                     # Flow Phase 5 执行调度
+├── flow-archive/                   # Flow Phase 7 归档
 ├── flow-explore/                   # Flow Phase 1 需求探索
 ├── flow-new/                       # Flow 变更脚手架
 ├── flow-plan/                      # Flow Phase 3 任务规划
 ├── flow-proposal/                  # Flow Phase 2 方案构建
-├── flow-reflect/                   # Flow Phase 3.5 执行前反思闸门
-├── flow-verify/                    # Flow Phase 5 验证审查
+├── flow-reflect/                   # Flow Phase 4 执行前反思闸门
+├── flow-verify/                    # Flow Phase 6 验证审查
 ├── frontend-design/                # 前端设计
 ├── frontend-review-skill/          # 前端边界验收
 ├── openspec/                       # OpenSpec 工作流（14 子技能）
@@ -246,4 +246,4 @@ MIT License - 见 LICENSE 文件
 | `python-quality-guide` | Python 高质量编程方法论（软约束） |
 | `python-quality-gate` | Python 代码质量硬闸门（flake8 + black + pytest 全绿才放行） |
 
-> **opsx-flow v4.1**: 已拆分为 9 个独立 skill（opsx-flow 总览 + 8 个 flow-xx 阶段 skill，含 Phase 3.5 执行前反思闸门 flow-reflect），详见上方 SKILLS.md。
+> **opsx-flow v4.2**: 已拆分为 9 个独立 skill（opsx-flow 总览 + 8 个 flow-xx 阶段 skill，含 Phase 4 执行前反思闸门 flow-reflect），详见上方 SKILLS.md。

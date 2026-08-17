@@ -1,10 +1,10 @@
 ---
-description: 'opsx-flow Phase 4: 执行+调度。按 tasks.md 的类型标注调度对应 skill 执行，质量闸门兜底，每 3-5
-  任务更新执行契约。触发词："执行"、"flow-apply"、"Phase 4"。'
+description: 'opsx-flow Phase 5: 执行+调度。按 tasks.md 的类型标注调度对应 skill 执行，质量闸门兜底，每 3-5
+  任务更新执行契约。触发词："执行"、"flow-apply"、"Phase 5"。'
 name: flow-apply
 ---
 
-# Flow-Apply — Phase 4: 执行与调度
+# Flow-Apply — Phase 5: 执行与调度
 
 ## ⚠️ 进入前必做
 
@@ -12,7 +12,7 @@ name: flow-apply
 read_file: openspec/changes/<change-name>/_checkpoint.md
 read_file: openspec/changes/<change-name>/_reflection.md
 ```
-确认 Phase 3 plan 已完成、tasks.md 已写，且 **_reflection.md 裁决含 GO 且无未决「先澄清/先验证」**（未经 Phase 3.5 反思闸门不得进入执行）。若 _reflection.md 缺失，或裁决仅含「先澄清/先验证」未含 GO，先回到 flow-reflect 处理完毕再执行。
+确认 Phase 3 plan 已完成、tasks.md 已写，且 **_reflection.md 裁决含 GO 且无未决「先澄清/先验证」**（未经 Phase 4 反思闸门不得进入执行）。若 _reflection.md 缺失，或裁决仅含「先澄清/先验证」未含 GO，先回到 flow-reflect 处理完毕再执行。
 
 ## 目的
 
@@ -73,4 +73,4 @@ read_file: skills/flow-verify/SKILL.md
 - [ ] tasks.md 所有任务 [x]
 - [ ] 每个任务有验证证据
 - [ ] python 任务跑过 gate
-- [ ] _checkpoint.md 标记 Phase 4 完成（指向 flow-verify）
+- [ ] _checkpoint.md 标记 Phase 5 完成（指向 flow-verify）

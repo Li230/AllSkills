@@ -1,10 +1,10 @@
 ---
-description: 'opsx-flow Phase 5: 验证+换模型审查。结构验证（spec↔实现一致性）+ 换模型独立审查，防止自审走过场。触发词："验证"、"flow-verify"、"Phase
+description: 'opsx-flow Phase 6: 验证+换模型审查。结构验证（spec↔实现一致性）+ 换模型独立审查，防止自审走过场。触发词："验证"、"flow-verify"、"Phase
   5"、"审查"。'
 name: flow-verify
 ---
 
-# Flow-Verify — Phase 5: 验证与审查
+# Flow-Verify — Phase 6: 验证与审查
 
 ## ⚠️ 进入前必做
 
@@ -12,7 +12,7 @@ name: flow-verify
 read_file: skills/verification-before-completion/SKILL.md
 read_file: openspec/changes/<change-name>/_checkpoint.md
 ```
-确认 Phase 4 apply 已完成、所有任务 [x]。
+确认 Phase 5 apply 已完成、所有任务 [x]。
 
 ## 目的
 
@@ -45,7 +45,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 
 ```
 审查意见 → 分类：
-  ├─ 必须修 → 回 Phase 4 补任务 → 修复 → 重验
+  ├─ 必须修 → 回 Phase 5 补任务 → 修复 → 重验
   ├─ 建议改 → 记录，本次可选修
   └─ 误报 → 说明理由，标记驳回
 ```

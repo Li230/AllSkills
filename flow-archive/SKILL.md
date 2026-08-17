@@ -1,17 +1,17 @@
 ---
-description: 'opsx-flow Phase 6: 归档收尾。变更移至 archive/、更新 STATUS.md、更新记忆、产出最终 checkpoint。触发词："归档"、"flow-archive"、"Phase
+description: 'opsx-flow Phase 7: 归档收尾。变更移至 archive/、更新 STATUS.md、更新记忆、产出最终 checkpoint。触发词："归档"、"flow-archive"、"Phase
   6"、"收尾"。'
 name: flow-archive
 ---
 
-# Flow-Archive — Phase 6: 归档
+# Flow-Archive — Phase 7: 归档
 
 ## ⚠️ 进入前必做
 
 ```
 read_file: openspec/changes/<change-name>/_checkpoint.md
 ```
-确认 Phase 5 verify 已完成、验证通过。
+确认 Phase 6 verify 已完成、验证通过。
 
 ## 目的
 

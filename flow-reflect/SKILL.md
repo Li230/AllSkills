@@ -1,9 +1,9 @@
 ---
-description: 'opsx-flow Phase 3.5: 执行前反思闸门。计划明确后、执行前，强制书面自问两个问题（需求哪里不明确 / 对哪里没把握），对拿不准的事实先联网核实（WebSearch），产出 _reflection.md 并给出 GO / 先澄清 / 先验证 裁决（澄清与验证可并存），重大疑点回退，禁止带病前进。触发词："反思"、"flow-reflect"、"执行前反思"、"Phase 3.5"。'
+description: 'opsx-flow Phase 4: 执行前反思闸门。计划明确后、执行前，强制书面自问两个问题（需求哪里不明确 / 对哪里没把握），对拿不准的事实先联网核实（WebSearch），产出 _reflection.md 并给出 GO / 先澄清 / 先验证 裁决（澄清与验证可并存），重大疑点回退，禁止带病前进。触发词："反思"、"flow-reflect"、"执行前反思"、"Phase 4"。'
 name: flow-reflect
 ---
 
-# Flow-Reflect — Phase 3.5: 执行前反思闸门
+# Flow-Reflect — Phase 4: 执行前反思闸门
 
 ## ⚠️ 进入前必做
 
@@ -41,7 +41,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 1. 读 _checkpoint.md、design.md、tasks.md
 2. 写 openspec/changes/<name>/_reflection.md（模板见下）
 3. 给裁决（可多选；GO 为放行，先澄清/先验证 可单独或同时出现）：
-   ├─ GO          → 仅当无未决澄清/验证时，更新 _checkpoint.md 指向 flow-apply，进入 Phase 4
+   ├─ GO          → 仅当无未决澄清/验证时，更新 _checkpoint.md 指向 flow-apply，进入 Phase 5
    ├─ 先澄清       → 回 flow-explore 向用户确认 Q1 卡点，澄清后重走 plan（可与先验证并存）
    └─ 先验证       → 在 tasks.md 顶部插一个 spike 任务（类型 verify/file-op），验证通过再全量执行（可与先澄清并存）
 4. 重大疑点一律回退，禁止带病前进（NASA 评审精神：异议必须被听见、被记录）
