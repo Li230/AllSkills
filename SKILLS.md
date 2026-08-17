@@ -77,7 +77,7 @@
 - [flow-explore](flow-explore/SKILL.md) - Phase 1 需求探索与质询（grill-me）
 - [flow-proposal](flow-proposal/SKILL.md) - Phase 2 方案构建（必读 brainstorming + spec self-review）
 - [flow-plan](flow-plan/SKILL.md) - Phase 3 原子任务规划（design.md + tasks.md）
-- [flow-reflect](flow-reflect/SKILL.md) - Phase 3.5 执行前反思闸门（书面自问两问 + GO/先澄清/先验证 裁决）
+- [flow-reflect](flow-reflect/SKILL.md) - Phase 3.5 执行前反思闸门（两问均先联网核实 + GO/先澄清/先验证 可并存 裁决）
 - [flow-apply](flow-apply/SKILL.md) - Phase 4 执行与调度（按任务类型调对应 skill）
 - [flow-verify](flow-verify/SKILL.md) - Phase 5 验证与换模型审查
 - [flow-archive](flow-archive/SKILL.md) - Phase 6 归档收尾（archive/ + STATUS.md 更新）

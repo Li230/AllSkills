@@ -131,7 +131,7 @@ opsx-flow 的 6 阶段 + 反思闸门子技能（explore → proposal → plan �
 | `flow-explore` | Phase 1 需求探索与质询（苏格拉底式提问挖透边界） |
 | `flow-proposal` | Phase 2 方案构建（产出 proposal.md + specs delta） |
 | `flow-plan` | Phase 3 原子任务规划（design.md + tasks.md） |
-| `flow-reflect` | Phase 3.5 执行前反思闸门（书面自问两问，产出 _reflection.md，GO/先澄清/先验证 裁决） |
+| `flow-reflect` | Phase 3.5 执行前反思闸门（两问均先联网核实，产出 _reflection.md，GO/先澄清/先验证 可并存 裁决） |
 | `flow-apply` | Phase 4 执行+调度（按 tasks 调度 skill，质量闸门兜底） |
 | `flow-verify` | Phase 5 验证 + 换模型独立审查，防自审走过场 |
 | `flow-archive` | Phase 6 归档收尾（更新 STATUS/记忆/最终 checkpoint） |
