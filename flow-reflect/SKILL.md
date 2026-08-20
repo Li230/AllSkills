@@ -1,5 +1,5 @@
 ---
-description: 'opsx-flow Phase 4: 执行前反思闸门。计划明确后、执行前，强制书面自问两个问题（需求哪里不明确 / 对哪里没把握），对拿不准的事实先联网核实（WebSearch），产出 _reflection.md 并给出 GO / 先澄清 / 先验证 裁决（澄清与验证可并存），重大疑点回退，禁止带病前进。触发词："反思"、"flow-reflect"、"执行前反思"、"Phase 4"。'
+description: 'opsx-flow Phase 4: 执行前反思闸门。计划明确后、执行前，强制书面自问三个问题（需求哪里不明确 / 对哪里没把握 / 任务级实现路径是否已在真实样本跑通），对拿不准的事实先联网核实（WebSearch），产出 _reflection.md 并给出 GO / 先澄清 / 先验证 裁决（澄清与验证可并存）。关键补强：Q3 任务级可行性探针——防止"描述清晰但做不通"的 task 带病前进。重大疑点回退，禁止带病前进。触发词："反思"、"flow-reflect"、"执行前反思"、"Phase 4"。'
 name: flow-reflect
 ---
 
@@ -35,6 +35,20 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 |---|---|---|---|
 | 例：第三方 API 限流未知 | 高 | 低 | 先写 10 行脚本压测 5 次 |
 
+### Q3 · 任务级可行性探针（Task Feasibility）⚠️ 本 skill 最易缺失的一环
+
+Q1 验的是「描述清晰 + 路线可行」（技术/API 是否存在），Q2 验的是「风险高低」。
+二者都**不保证单个实现 task 的实现路径能在我们真实样本上跑通**——一个 task 可以描述极清晰却根本做不通
+（例如"从某实验代码抽离"，而该代码从未落库、从未实跑）。
+
+- 对 tasks.md 中**每个 `feature` / `python` task**，强制问：**「所选实现路径是否已在我们的真实样本上跑通过（而非仅描述清晰）？」**
+- 未验证者须写**最小 task 级 spike（≤30 行）**：mock 外部依赖，或在 1 个真实页/样本上实跑该 task 的核心逻辑，结果记入 `_reflection.md` 的 Task Feasibility 表。
+- 判据：task 描述清晰 **且** 实现路径已用真实样本验证 → 才视为 ready。仅"描述清晰"不足以 GO。
+
+| task | 实现路径 | 已验证? | spike 结果 |
+|---|---|---|---|
+| （逐 `feature`/`python` task 一行） | | | |
+
 ## 执行步骤
 
 ```
@@ -43,7 +57,7 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 3. 给裁决（可多选；GO 为放行，先澄清/先验证 可单独或同时出现）：
    ├─ GO          → 仅当无未决澄清/验证时，更新 _checkpoint.md 指向 flow-apply，进入 Phase 5
    ├─ 先澄清       → 回 flow-explore 向用户确认 Q1 卡点，澄清后重走 plan（可与先验证并存）
-   └─ 先验证       → 在 tasks.md 顶部插一个 spike 任务（类型 verify/file-op），验证通过再全量执行（可与先澄清并存）
+   └─ 先验证       → 在 tasks.md 顶部插 spike 任务（类型 verify/file-op）。**spike 分两级**：决策级（护关键假设，如外部端点存不存在）+ 任务级（护每个 `feature`/`python` task 的实现路径，见 Q3）。任务级 spike 缺失则不可 GO（可与先澄清并存）
 4. 重大疑点一律回退，禁止带病前进（NASA 评审精神：异议必须被听见、被记录）
 ```
 
@@ -61,6 +75,13 @@ read_file: openspec/changes/<change-name>/_checkpoint.md
 | 没把握的点 | 致命度 | 证据度 | 联网核实结论 | 最便宜的 de-risk 动作 |
 |---|---|---|---|---|
 | （逐条列出） | | | | |
+
+## Q3 任务级可行性（Task Feasibility，逐 task 实跑探针）
+- [ ] task「X.Y」实现路径**已在真实样本跑通**：spike=__通过/失败__；失败则__影响__，需[先验证 / 先修正设计]
+- [ ] （每个 `feature`/`python` task 一行；纯 docs/file-op/git-op 标 N/A）
+| task | 实现路径 | 已验证? | spike 结果 |
+|---|---|---|---|
+| （逐 `feature`/`python` task 一行） | | | |
 
 ## 裁决（go/no-go，可多选）
 - [ ] GO → 进入 flow-apply（仅当无未决澄清/验证）
@@ -88,6 +109,7 @@ read_file: skills/flow-apply/SKILL.md   # 仅当裁决含 GO 且无未决的「�
 - [ ] _reflection.md 已写
 - [ ] Q1、Q2 都有书面回答（无疑点须显式写「无」）
 - [ ] 拿不准的事实/技术点已做联网核实（WebSearch）并记录结论
+- [ ] **Q3 任务级可行性已执行**：每个 `feature`/`python` task 已实现路径验证或显式标注 N/A，结果记入 Task Feasibility 表
 - [ ] 裁决明确（GO 互斥；先澄清/先验证 可单独或并存）
 - [ ] 若为「先澄清」已回 flow-explore；若为「先验证」已在 tasks.md 插入 spike
 - [ ] _checkpoint.md 已更新（裁决含 GO 且无未决澄清/验证时指向 flow-apply）
