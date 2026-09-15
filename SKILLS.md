@@ -32,6 +32,9 @@
 - [selfImprove](selfImprove/SKILL.md) - 捕获学习、错误和修正，实现持续改进
 - [project_memory_manager](project_memory_manager/SKILL.md) - 跨会话记忆管理，读取/维护项目记忆
 
+### Autonomous Agents
+- [night-flow](night-flow/SKILL.md) - 夜间/长时段动态自主任务循环：agent 自主划分时段、检验产出、发布并执行新任务，证据制验收，跨框架通用
+
 ### File Operations
 - [docx](docx/SKILL.md) - 创建、读取、编辑或操作 Word 文档（.docx 文件）
 - [xlsx](xlsx/SKILL.md) - 打开、读取、编辑或创建电子表格（.xlsx、.xlsm、.csv、.tsv）
