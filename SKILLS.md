@@ -34,6 +34,7 @@
 
 ### Autonomous Agents
 - [night-flow](night-flow/SKILL.md) - 夜间/长时段动态自主任务循环：agent 自主划分时段、检验产出、发布并执行新任务，证据制验收，跨框架通用
+- [h3-cinematic](h3-cinematic/SKILL.md) - MiniMax H3 电影级提示词专家：融合官方六段式格式与导演链逻辑（机位先行/明度结构/质感边界），素材问询判型 + 帧数预算 + 受控语法
 
 ### File Operations
 - [docx](docx/SKILL.md) - 创建、读取、编辑或操作 Word 文档（.docx 文件）
