@@ -34,7 +34,8 @@
 
 ### Autonomous Agents
 - [night-flow](night-flow/SKILL.md) - 夜间/长时段动态自主任务循环：agent 自主划分时段、检验产出、发布并执行新任务，证据制验收，跨框架通用
-- [h3-cinematic](h3-cinematic/SKILL.md) - MiniMax H3 电影级提示词专家：融合官方六段式格式与导演链逻辑（机位先行/明度结构/质感边界），素材问询判型 + 帧数预算 + 受控语法
+- [h3-prompt-writer](h3-prompt-writer/SKILL.md) - MiniMax H3 生产级视频提示词生成器：判型 + 官方方言三段/ref 六段结构 + 逐镜五槽模板，电影 1.5-2.5s 与竖屏漫剧 4-8s 双节奏带宽，参考绑定与对白硬规则
+- [h3-cinematic-polish](h3-cinematic-polish/SKILL.md) - H3 提示词电影级/漫剧级优化审查器：导演链八问 + 镜头叙事学（切点可见变化/工作景别阶梯）+ 竖屏漫剧爽感专项，只改病灶槽位不整段重写
 
 ### File Operations
 - [docx](docx/SKILL.md) - 创建、读取、编辑或操作 Word 文档（.docx 文件）
