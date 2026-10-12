@@ -68,9 +68,18 @@ read_file: skills/flow-explore/SKILL.md
 下一步: Phase 1 Explore（需求质询）
 ```
 
+## 硬约束（不可跳过）
+
+- **产出后必须立即加载并执行 flow-explore**（用 Skill 工具调用）。
+- **未完成需求质询前，禁止修改任何源码**——脚手架与本变更目录下的文档除外。
+- 用户把任务描述随触发词一起发来时也一样：先走完流程，再实施；质询阶段该问的问题照问。
+- checkpoint 里"下一步 read_file: ..."是**义务，不是备注**：同一回合内推进下一阶段，
+  或停在需要用户回答的质询问题上。
+
 ## 完成标准
 
 - [ ] 变更名已确认
 - [ ] 目录已创建
 - [ ] .openspec.yaml 已写
 - [ ] _checkpoint.md 已写（指向 flow-explore）
+- [ ] 已尝试加载并进入 flow-explore（或因需用户回答而明确停住）

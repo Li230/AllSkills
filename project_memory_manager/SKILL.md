@@ -8,7 +8,7 @@ type: project
 
 ## 核心目标
 
-1. **跨会话记忆保留** - 解决重开 Claude 时重要记忆丢失的问题
+1. **跨会话记忆保留** - 解决重开 Codex 时重要记忆丢失的问题
 2. **记忆分级存储** - 不同重要等级的内容放在不同文档里
 3. **自动维护精炼** - 每次对话后及时更新，删除过时内容
 4. **项目上下文共享** - 为所有会话提供一致的项目背景信息
@@ -40,7 +40,7 @@ project_root/
 # 检查 memory 文件夹是否存在，不存在则自动创建
 if [ ! -d "memory" ]; then
     mkdir -p memory
-    bash ~/.claude/skills/project_memory_manager/scripts/init_memory.sh
+    bash ~/.Codex/skills/project_memory_manager/scripts/init_memory.sh
 fi
 ```
 last_updated: $(date -Iseconds)
@@ -192,19 +192,19 @@ EOF
 
 ```bash
 # 添加会话内容到日志
-bash ~/.claude/skills/project_memory_manager/scripts/update_memory.sh add-session "内容"
+bash ~/.Codex/skills/project_memory_manager/scripts/update_memory.sh add-session "内容"
 
 # 添加知识到知识库
-bash ~/.claude/skills/project_memory_manager/scripts/update_memory.sh add-knowledge "内容"
+bash ~/.Codex/skills/project_memory_manager/scripts/update_memory.sh add-knowledge "内容"
 
 # 标记任务完成
-bash ~/.claude/skills/project_memory_manager/scripts/update_memory.sh complete-task "任务名"
+bash ~/.Codex/skills/project_memory_manager/scripts/update_memory.sh complete-task "任务名"
 
 # 清理会话日志
-bash ~/.claude/skills/project_memory_manager/scripts/update_memory.sh cleanup-session
+bash ~/.Codex/skills/project_memory_manager/scripts/update_memory.sh cleanup-session
 
 # 查看记忆状态
-bash ~/.claude/skills/project_memory_manager/scripts/update_memory.sh status
+bash ~/.Codex/skills/project_memory_manager/scripts/update_memory.sh status
 ```
 
 ## 记忆更新触发器
